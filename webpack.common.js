@@ -69,8 +69,8 @@ module.exports = {
         use: ['file-loader'],
       },
       {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
+        test: /\.(ts|js)$/,
+        use: 'babel-loader',
         exclude: /node_modules/,
       },
     ],
