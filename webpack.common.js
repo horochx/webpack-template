@@ -3,15 +3,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ManifestPlugin = require('webpack-manifest-plugin')
 
+const resolve = p => path.resolve(__dirname, p)
+
 module.exports = {
   entry: {
-    index: './src/index.ts',
-    another: './src/another.ts',
+    index: resolve('src/index.ts'),
+    another: resolve('src/another.ts'),
   },
 
   output: {
     hashDigestLength: 8,
-    path: path.resolve(__dirname, 'dist'),
+    path: resolve('dist'),
   },
 
   optimization: {
@@ -34,21 +36,21 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'webpack template',
       filename: 'index.html',
-      template: './src/template.html',
+      template: resolve('src/template.html'),
       chunks: ['runtime', 'vendors', 'index'],
     }),
     new HtmlWebpackPlugin({
       title: 'another',
       filename: 'another.html',
-      template: './src/template.html',
+      template: resolve('src/template.html'),
       chunks: ['runtime', 'vendors', 'another'],
     }),
   ],
 
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.ts', '.js'],
     alias: {
-      '@': './src',
+      '@': resolve('src'),
     },
   },
 
@@ -56,7 +58,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,

@@ -1,6 +1,9 @@
+const path = require('path')
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
 const webpack = require('webpack')
+
+const resolve = p => path.resolve(__dirname, p)
 
 module.exports = merge(common, {
   mode: 'development',
@@ -8,7 +11,7 @@ module.exports = merge(common, {
   devtool: 'source-map',
 
   devServer: {
-    contentBase: './dist',
+    contentBase: resolve('dist'),
     hot: true,
   },
 
