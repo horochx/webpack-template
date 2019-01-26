@@ -1,11 +1,24 @@
-const merge = require('webpack-merge')
-const common = require('./webpack.common.js')
+const { distPath } = require('./webpack.utils')
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
+const ManifestPlugin = require('webpack-manifest-plugin')
 
-module.exports = merge(common, {
+module.exports = {
   mode: 'production',
 
   output: {
-    filename: '[name].[contenthash].bundle.js',
-    chunkFilename: '[name].[contenthash].bundle.js',
+    filename: 'js/[contenthash].bundle.js',
+    chunkFilename: 'js/[contenthash].bundle.js',
   },
-})
+
+  plugins: [
+    new CleanWebpackPlugin([distPath]),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled ',
+      generateStatsFile: true,
+      statsFilename: 'webpack-bundle-analyzer.json',
+    }),
+    new ManifestPlugin(),
+  ],
+}

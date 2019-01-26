@@ -1,12 +1,7 @@
-import './style.css'
-import logo from './logo-on-white-bg.svg'
+import '@/style.css'
+import logo from '@/logo-on-white-bg.svg'
+import { cube } from '@/math'
 ;(() => {
-  const div = document.createElement('div')
-
-  div.innerHTML = 'hello world'
-
-  div.className = 'text'
-
   const img = new Image()
 
   img.src = logo
@@ -15,7 +10,21 @@ import logo from './logo-on-white-bg.svg'
 
   document.body.appendChild(img)
 
-  document.body.appendChild(div)
+  const helloWorld = document.createElement('div')
+
+  helloWorld.innerHTML = 'hello world'
+
+  helloWorld.className = 'text'
+
+  document.body.appendChild(helloWorld)
+
+  const computed = document.createElement('div')
+
+  computed.innerHTML = `The cube of 3 is ${cube(3)}`
+
+  computed.className = 'text'
+
+  document.body.appendChild(computed)
 
   const timeOut = async () => {
     const result = await new Promise((resolve, reject) => {

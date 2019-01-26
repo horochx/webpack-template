@@ -1,24 +1,15 @@
-const path = require('path')
-const merge = require('webpack-merge')
-const common = require('./webpack.common.js')
+const { distPath } = require('./webpack.utils')
 const webpack = require('webpack')
 
-const resolve = p => path.resolve(__dirname, p)
-
-module.exports = merge(common, {
+module.exports = {
   mode: 'development',
 
   devtool: 'source-map',
 
   devServer: {
-    contentBase: resolve('dist'),
+    contentBase: distPath,
     hot: true,
   },
 
-  output: {
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
-  },
-
   plugins: [new webpack.HotModuleReplacementPlugin()],
-})
+}

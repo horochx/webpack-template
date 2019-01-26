@@ -1,78 +1,114 @@
-const path = require('path')
+const {
+  resolve,
+  sourcePath,
+  distPath,
+  createFileLoader,
+} = require('./webpack.utils')
+const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const ManifestPlugin = require('webpack-manifest-plugin')
+// const threadLoader = require('thread-loader')
 
-const resolve = p => path.resolve(__dirname, p)
+// threadLoader.warmup(
+//   {
+//     workers: 2,
+//     workerParallelJobs: 50,
+//     workerNodeArgs: ['--max-old-space-size=1024'],
+//     poolRespawn: false,
+//     poolTimeout: Infinity,
+//     poolParallelJobs: 50,
+//     name: 'babel-pool',
+//   },
+//   ['babel-loader']
+// )
 
-module.exports = {
-  entry: {
-    index: resolve('src/index.ts'),
-    another: resolve('src/another.ts'),
-  },
+module.exports = (env = {}) => {
+  const isProduction = env.production
 
-  output: {
-    hashDigestLength: 8,
-    path: resolve('dist'),
-  },
+  return merge(
+    {
+      entry: {
+        index: resolve(sourcePath, 'index.ts'),
+        another: resolve(sourcePath, 'another.ts'),
+      },
 
-  optimization: {
-    usedExports: true,
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
+      output: {
+        path: distPath,
+        hashDigestLength: 8,
+        filename: isProduction
+          ? 'js/[contenthash].bundle.js'
+          : '[name].bundle.js',
+        chunkFilename: isProduction
+          ? 'js/[contenthash].bundle.js'
+          : '[name].bundle.js',
+      },
+
+      optimization: {
+        usedExports: true,
+        runtimeChunk: 'single',
+        splitChunks: {
+          cacheGroups: {
+            vendor: {
+              test: /[\\/]node_modules[\\/]/,
+              name: 'vendors',
+              chunks: 'all',
+            },
+          },
         },
       },
+
+      plugins: [
+        new HtmlWebpackPlugin({
+          title: 'webpack template',
+          filename: 'index.html',
+          template: resolve(sourcePath, 'template.html'),
+          chunks: ['runtime', 'vendors', 'index'],
+        }),
+        new HtmlWebpackPlugin({
+          title: 'another',
+          filename: 'another.html',
+          template: resolve(sourcePath, 'template.html'),
+          chunks: ['runtime', 'vendors', 'another'],
+        }),
+      ],
+
+      resolve: {
+        modules: [sourcePath, 'node_modules'],
+        extensions: ['.ts', '.js'],
+        alias: {
+          '@': sourcePath,
+        },
+        symlinks: false,
+        cacheWithContext: false,
+      },
+
+      module: {
+        rules: [
+          {
+            test: /\.css$/,
+            include: sourcePath,
+            use: ['style-loader', 'css-loader', 'postcss-loader'],
+          },
+          {
+            test: /\.(png|svg|jpg|gif)$/,
+            include: sourcePath,
+            use: [createFileLoader('images', isProduction)],
+          },
+          {
+            test: /\.(woff|woff2|eot|ttf|otf)$/,
+            include: sourcePath,
+            use: [createFileLoader('fonts', isProduction)],
+          },
+          {
+            test: /\.(ts|js)$/,
+            include: sourcePath,
+            use: [
+              // 'thread-loader',
+              'babel-loader',
+            ],
+          },
+        ],
+      },
     },
-  },
-
-  plugins: [
-    new ManifestPlugin(),
-    new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({
-      title: 'webpack template',
-      filename: 'index.html',
-      template: resolve('src/template.html'),
-      chunks: ['runtime', 'vendors', 'index'],
-    }),
-    new HtmlWebpackPlugin({
-      title: 'another',
-      filename: 'another.html',
-      template: resolve('src/template.html'),
-      chunks: ['runtime', 'vendors', 'another'],
-    }),
-  ],
-
-  resolve: {
-    extensions: ['.ts', '.js'],
-    alias: {
-      '@': resolve('src'),
-    },
-  },
-
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
-      },
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: ['file-loader'],
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ['file-loader'],
-      },
-      {
-        test: /\.(ts|js)$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
-      },
-    ],
-  },
+    isProduction ? require('./webpack.prod') : require('./webpack.dev')
+  )
 }
