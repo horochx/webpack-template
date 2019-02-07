@@ -114,6 +114,7 @@ module.exports = (env = {}) => {
             test: /\.(ts|js)$/,
             include: sourcePath,
             use: [
+              'cache-loader',
               // 'thread-loader',
               'babel-loader',
             ],

@@ -5,8 +5,8 @@
   ],
   "version": "4.29.0",
   "hash": "727da855",
-  "time": 2458,
-  "builtAt": 1549509032333,
+  "time": 1636,
+  "builtAt": 1549518337643,
   "publicPath": "",
   "outputPath": "D:\\code\\webpack-template\\dist",
   "assetsByChunkName": {
@@ -227,7 +227,7 @@
       "modules": [
         {
           "id": 10,
-          "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\another.ts",
+          "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\another.ts",
           "name": "./src/another.ts",
           "index": 12,
           "index2": 12,
@@ -319,13 +319,13 @@
           "chunks": [
             2
           ],
-          "issuer": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "issuer": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "issuerId": null,
           "issuerName": "./src/index.ts",
           "issuerPath": [
             {
               "id": null,
-              "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "name": "./src/index.ts"
             }
           ],
@@ -337,7 +337,7 @@
           "reasons": [
             {
               "moduleId": 11,
-              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
               "module": "./src/index.ts + 1 modules",
               "moduleName": "./src/index.ts + 1 modules",
               "type": "harmony side effect evaluation",
@@ -346,7 +346,7 @@
             },
             {
               "moduleId": 11,
-              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
               "module": "./src/index.ts + 1 modules",
               "moduleName": "./src/index.ts + 1 modules",
               "type": "harmony import specifier",
@@ -378,13 +378,13 @@
           "chunks": [
             2
           ],
-          "issuer": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "issuer": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "issuerId": null,
           "issuerName": "./src/index.ts",
           "issuerPath": [
             {
               "id": null,
-              "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "name": "./src/index.ts"
             }
           ],
@@ -396,7 +396,7 @@
           "reasons": [
             {
               "moduleId": 11,
-              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
               "module": "./src/index.ts + 1 modules",
               "moduleName": "./src/index.ts + 1 modules",
               "type": "harmony side effect evaluation",
@@ -432,7 +432,7 @@
           "issuerPath": [
             {
               "id": null,
-              "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "name": "./src/index.ts"
             },
             {
@@ -467,7 +467,7 @@
         },
         {
           "id": 11,
-          "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+          "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
           "name": "./src/index.ts + 1 modules",
           "index": 0,
           "index2": 11,
@@ -511,7 +511,7 @@
           "modules": [
             {
               "id": null,
-              "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "name": "./src/index.ts",
               "index": 0,
               "index2": 11,
@@ -553,7 +553,7 @@
             },
             {
               "id": null,
-              "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\math.ts",
+              "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\math.ts",
               "name": "./src/math.ts",
               "index": 11,
               "index2": 10,
@@ -564,13 +564,13 @@
               "prefetched": false,
               "chunks": [
               ],
-              "issuer": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "issuer": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "issuerId": null,
               "issuerName": "./src/index.ts",
               "issuerPath": [
                 {
                   "id": null,
-                  "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+                  "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
                   "name": "./src/index.ts"
                 }
               ],
@@ -582,7 +582,7 @@
               "reasons": [
                 {
                   "moduleId": null,
-                  "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+                  "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
                   "module": "./src/index.ts",
                   "moduleName": "./src/index.ts",
                   "type": "harmony side effect evaluation",
@@ -591,7 +591,7 @@
                 },
                 {
                   "moduleId": null,
-                  "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+                  "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
                   "module": "./src/index.ts",
                   "moduleName": "./src/index.ts",
                   "type": "harmony import specifier",
@@ -667,13 +667,13 @@
           "chunks": [
             3
           ],
-          "issuer": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "issuer": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "issuerId": null,
           "issuerName": "./src/index.ts",
           "issuerPath": [
             {
               "id": null,
-              "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "name": "./src/index.ts"
             }
           ],
@@ -685,7 +685,7 @@
           "reasons": [
             {
               "moduleId": 11,
-              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
               "module": "./src/index.ts + 1 modules",
               "moduleName": "./src/index.ts + 1 modules",
               "type": "harmony side effect evaluation",
@@ -694,7 +694,7 @@
             },
             {
               "moduleId": 11,
-              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
               "module": "./src/index.ts + 1 modules",
               "moduleName": "./src/index.ts + 1 modules",
               "type": "harmony import specifier",
@@ -703,7 +703,7 @@
             },
             {
               "moduleId": 11,
-              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
               "module": "./src/index.ts + 1 modules",
               "moduleName": "./src/index.ts + 1 modules",
               "type": "harmony import specifier",
@@ -735,13 +735,13 @@
           "chunks": [
             3
           ],
-          "issuer": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "issuer": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "issuerId": null,
           "issuerName": "./src/index.ts",
           "issuerPath": [
             {
               "id": null,
-              "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "name": "./src/index.ts"
             }
           ],
@@ -753,7 +753,7 @@
           "reasons": [
             {
               "moduleId": 11,
-              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
               "module": "./src/index.ts + 1 modules",
               "moduleName": "./src/index.ts + 1 modules",
               "type": "harmony side effect evaluation",
@@ -762,7 +762,7 @@
             },
             {
               "moduleId": 11,
-              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
               "module": "./src/index.ts + 1 modules",
               "moduleName": "./src/index.ts + 1 modules",
               "type": "harmony import specifier",
@@ -800,7 +800,7 @@
           "issuerPath": [
             {
               "id": null,
-              "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "name": "./src/index.ts"
             },
             {
@@ -853,7 +853,7 @@
           "issuerPath": [
             {
               "id": null,
-              "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "name": "./src/index.ts"
             },
             {
@@ -911,7 +911,7 @@
           "issuerPath": [
             {
               "id": null,
-              "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "name": "./src/index.ts"
             },
             {
@@ -969,7 +969,7 @@
           "issuerPath": [
             {
               "id": null,
-              "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "name": "./src/index.ts"
             },
             {
@@ -1022,7 +1022,7 @@
           "issuerPath": [
             {
               "id": null,
-              "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "name": "./src/index.ts"
             },
             {
@@ -1090,13 +1090,13 @@
       "chunks": [
         3
       ],
-      "issuer": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+      "issuer": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
       "issuerId": null,
       "issuerName": "./src/index.ts",
       "issuerPath": [
         {
           "id": null,
-          "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "name": "./src/index.ts"
         }
       ],
@@ -1108,7 +1108,7 @@
       "reasons": [
         {
           "moduleId": 11,
-          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
           "module": "./src/index.ts + 1 modules",
           "moduleName": "./src/index.ts + 1 modules",
           "type": "harmony side effect evaluation",
@@ -1117,7 +1117,7 @@
         },
         {
           "moduleId": 11,
-          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
           "module": "./src/index.ts + 1 modules",
           "moduleName": "./src/index.ts + 1 modules",
           "type": "harmony import specifier",
@@ -1126,7 +1126,7 @@
         },
         {
           "moduleId": 11,
-          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
           "module": "./src/index.ts + 1 modules",
           "moduleName": "./src/index.ts + 1 modules",
           "type": "harmony import specifier",
@@ -1158,13 +1158,13 @@
       "chunks": [
         3
       ],
-      "issuer": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+      "issuer": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
       "issuerId": null,
       "issuerName": "./src/index.ts",
       "issuerPath": [
         {
           "id": null,
-          "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "name": "./src/index.ts"
         }
       ],
@@ -1176,7 +1176,7 @@
       "reasons": [
         {
           "moduleId": 11,
-          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
           "module": "./src/index.ts + 1 modules",
           "moduleName": "./src/index.ts + 1 modules",
           "type": "harmony side effect evaluation",
@@ -1185,7 +1185,7 @@
         },
         {
           "moduleId": 11,
-          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
           "module": "./src/index.ts + 1 modules",
           "moduleName": "./src/index.ts + 1 modules",
           "type": "harmony import specifier",
@@ -1217,13 +1217,13 @@
       "chunks": [
         2
       ],
-      "issuer": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+      "issuer": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
       "issuerId": null,
       "issuerName": "./src/index.ts",
       "issuerPath": [
         {
           "id": null,
-          "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "name": "./src/index.ts"
         }
       ],
@@ -1235,7 +1235,7 @@
       "reasons": [
         {
           "moduleId": 11,
-          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
           "module": "./src/index.ts + 1 modules",
           "moduleName": "./src/index.ts + 1 modules",
           "type": "harmony side effect evaluation",
@@ -1244,7 +1244,7 @@
         },
         {
           "moduleId": 11,
-          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
           "module": "./src/index.ts + 1 modules",
           "moduleName": "./src/index.ts + 1 modules",
           "type": "harmony import specifier",
@@ -1282,7 +1282,7 @@
       "issuerPath": [
         {
           "id": null,
-          "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "name": "./src/index.ts"
         },
         {
@@ -1335,7 +1335,7 @@
       "issuerPath": [
         {
           "id": null,
-          "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "name": "./src/index.ts"
         },
         {
@@ -1387,13 +1387,13 @@
       "chunks": [
         2
       ],
-      "issuer": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+      "issuer": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
       "issuerId": null,
       "issuerName": "./src/index.ts",
       "issuerPath": [
         {
           "id": null,
-          "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "name": "./src/index.ts"
         }
       ],
@@ -1405,7 +1405,7 @@
       "reasons": [
         {
           "moduleId": 11,
-          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+          "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
           "module": "./src/index.ts + 1 modules",
           "moduleName": "./src/index.ts + 1 modules",
           "type": "harmony side effect evaluation",
@@ -1441,7 +1441,7 @@
       "issuerPath": [
         {
           "id": null,
-          "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "name": "./src/index.ts"
         },
         {
@@ -1494,7 +1494,7 @@
       "issuerPath": [
         {
           "id": null,
-          "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "name": "./src/index.ts"
         },
         {
@@ -1552,7 +1552,7 @@
       "issuerPath": [
         {
           "id": null,
-          "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "name": "./src/index.ts"
         },
         {
@@ -1605,7 +1605,7 @@
       "issuerPath": [
         {
           "id": null,
-          "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "name": "./src/index.ts"
         },
         {
@@ -1645,7 +1645,7 @@
     },
     {
       "id": 10,
-      "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\another.ts",
+      "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\another.ts",
       "name": "./src/another.ts",
       "index": 12,
       "index2": 12,
@@ -1687,7 +1687,7 @@
     },
     {
       "id": 11,
-      "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 8e0f98e53a12a586114a31434eda33cd",
+      "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts 9db2fe5457ca94bd1e80b9cf5b18f659",
       "name": "./src/index.ts + 1 modules",
       "index": 0,
       "index2": 11,
@@ -1731,7 +1731,7 @@
       "modules": [
         {
           "id": null,
-          "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "name": "./src/index.ts",
           "index": 0,
           "index2": 11,
@@ -1773,7 +1773,7 @@
         },
         {
           "id": null,
-          "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\math.ts",
+          "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\math.ts",
           "name": "./src/math.ts",
           "index": 11,
           "index2": 10,
@@ -1784,13 +1784,13 @@
           "prefetched": false,
           "chunks": [
           ],
-          "issuer": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+          "issuer": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
           "issuerId": null,
           "issuerName": "./src/index.ts",
           "issuerPath": [
             {
               "id": null,
-              "identifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "identifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "name": "./src/index.ts"
             }
           ],
@@ -1802,7 +1802,7 @@
           "reasons": [
             {
               "moduleId": null,
-              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "module": "./src/index.ts",
               "moduleName": "./src/index.ts",
               "type": "harmony side effect evaluation",
@@ -1811,7 +1811,7 @@
             },
             {
               "moduleId": null,
-              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
+              "moduleIdentifier": "D:\\code\\webpack-template\\node_modules\\cache-loader\\dist\\cjs.js!D:\\code\\webpack-template\\node_modules\\babel-loader\\lib\\index.js!D:\\code\\webpack-template\\src\\index.ts",
               "module": "./src/index.ts",
               "moduleName": "./src/index.ts",
               "type": "harmony import specifier",
