@@ -89,9 +89,21 @@ module.exports = (env = {}) => {
             use: ['style-loader', 'css-loader', 'postcss-loader'],
           },
           {
-            test: /\.(png|svg|jpg|gif)$/,
+            test: /\.(png|svg|jpe?g|gif)$/,
             include: sourcePath,
-            use: [createFileLoader('images', isProduction)],
+            use: [
+              isProduction
+                ? {
+                    loader: 'url-loader',
+                    options: Object.assign(
+                      {
+                        limit: 100000,
+                      },
+                      createFileLoader('images', isProduction).options
+                    ),
+                  }
+                : createFileLoader('images', isProduction),
+            ],
           },
           {
             test: /\.(woff|woff2|eot|ttf|otf)$/,
