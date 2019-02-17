@@ -7,11 +7,6 @@ const ManifestPlugin = require('webpack-manifest-plugin')
 module.exports = {
   mode: 'production',
 
-  output: {
-    filename: 'js/[contenthash].bundle.js',
-    chunkFilename: 'js/[contenthash].bundle.js',
-  },
-
   plugins: [
     new CleanWebpackPlugin([distPath]),
     new BundleAnalyzerPlugin({

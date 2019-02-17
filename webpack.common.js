@@ -97,7 +97,7 @@ module.exports = (env = {}) => {
                     loader: 'url-loader',
                     options: Object.assign(
                       {
-                        limit: 100000,
+                        limit: 10000,
                       },
                       createFileLoader('images', isProduction).options
                     ),
