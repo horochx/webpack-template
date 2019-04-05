@@ -6,7 +6,9 @@ const {
 } = require('./webpack.utils')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const threadLoader = require('thread-loader')
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+const { DefinePlugin } = require('webpack')
 
 module.exports = (env = {}) => {
   const isProduction = env.production
@@ -14,8 +16,7 @@ module.exports = (env = {}) => {
   return merge(
     {
       entry: {
-        index: resolve(sourcePath, 'index.ts'),
-        another: resolve(sourcePath, 'another.ts'),
+        react: resolve(sourcePath, 'react/index.ts'),
       },
 
       output: {
@@ -44,23 +45,32 @@ module.exports = (env = {}) => {
       },
 
       plugins: [
-        new HtmlWebpackPlugin({
-          title: 'webpack template',
-          filename: 'index.html',
-          template: resolve(sourcePath, 'template.html'),
-          chunks: ['runtime', 'vendors', 'index'],
+        new CopyPlugin([
+          {
+            from: resolve('./public'),
+            to: distPath,
+          },
+        ]),
+        new ForkTsCheckerWebpackPlugin(),
+        new DefinePlugin({
+          'process.env': {
+            NODE_ENV: JSON.stringify(
+              isProduction ? 'production' : 'development'
+            ),
+          },
+          SERVICE_URL: JSON.stringify('https://dev.example.com/'),
         }),
         new HtmlWebpackPlugin({
-          title: 'another',
-          filename: 'another.html',
-          template: resolve(sourcePath, 'template.html'),
-          chunks: ['runtime', 'vendors', 'another'],
+          title: 'React App',
+          filename: 'react.html',
+          template: resolve('./public/react.html'),
+          chunks: ['runtime', 'vendors', 'react'],
         }),
       ],
 
       resolve: {
         modules: [sourcePath, 'node_modules'],
-        extensions: ['.ts', '.js'],
+        extensions: ['.ts', '.tsx', '.js'],
         alias: {
           '@': sourcePath,
         },
@@ -98,7 +108,7 @@ module.exports = (env = {}) => {
             use: [createFileLoader('fonts', isProduction)],
           },
           {
-            test: /\.(ts|js)$/,
+            test: /\.(tsx?|js)$/,
             include: sourcePath,
             use: [
               {
@@ -108,6 +118,12 @@ module.exports = (env = {}) => {
                 },
               },
               'thread-loader',
+              {
+                loader: 'ts-loader',
+                options: {
+                  happyPackMode: true,
+                },
+              },
               'babel-loader',
             ],
           },

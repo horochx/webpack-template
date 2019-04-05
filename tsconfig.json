@@ -10,6 +10,8 @@
     "module": "esnext",
     "target": "esnext",
     "jsx": "preserve",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "allowJs": true
   },
   "include": [
