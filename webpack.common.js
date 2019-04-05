@@ -6,20 +6,7 @@ const {
 } = require('./webpack.utils')
 const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const threadLoader = require('thread-loader')
-
-// threadLoader.warmup(
-//   {
-//     workers: 2,
-//     workerParallelJobs: 50,
-//     workerNodeArgs: ['--max-old-space-size=1024'],
-//     poolRespawn: false,
-//     poolTimeout: Infinity,
-//     poolParallelJobs: 50,
-//     name: 'babel-pool',
-//   },
-//   ['babel-loader']
-// )
+const threadLoader = require('thread-loader')
 
 module.exports = (env = {}) => {
   const isProduction = env.production
@@ -114,8 +101,13 @@ module.exports = (env = {}) => {
             test: /\.(ts|js)$/,
             include: sourcePath,
             use: [
-              'cache-loader',
-              // 'thread-loader',
+              {
+                loader: 'cache-loader',
+                options: {
+                  cacheDirectory: resolve('node_modules/.cache-loader'),
+                },
+              },
+              'thread-loader',
               'babel-loader',
             ],
           },

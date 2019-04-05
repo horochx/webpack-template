@@ -110,5 +110,5 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-# cache-loader
-.cache-loader
+# dist
+.dist

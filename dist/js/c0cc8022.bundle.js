@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{10:function(e,n){var o;(o=document.createElement("div")).innerHTML="hello other page.",document.body.appendChild(o)}},[[10,0]]]);
