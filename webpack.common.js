@@ -9,6 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const { DefinePlugin } = require('webpack')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = (env = {}) => {
   const isProduction = env.production
@@ -17,6 +18,7 @@ module.exports = (env = {}) => {
     {
       entry: {
         react: resolve(sourcePath, 'react/index.ts'),
+        vue: resolve(sourcePath, 'vue/main.ts'),
       },
 
       output: {
@@ -45,6 +47,7 @@ module.exports = (env = {}) => {
       },
 
       plugins: [
+        new VueLoaderPlugin(),
         new CopyPlugin([
           {
             from: resolve('./public'),
@@ -62,9 +65,15 @@ module.exports = (env = {}) => {
         }),
         new HtmlWebpackPlugin({
           title: 'React App',
-          filename: 'react.html',
-          template: resolve('./public/react.html'),
+          filename: 'index.html',
+          template: resolve('./public/index.html'),
           chunks: ['runtime', 'vendors', 'react'],
+        }),
+        new HtmlWebpackPlugin({
+          title: 'Vue App',
+          filename: 'vue.html',
+          template: resolve('./public/index.html'),
+          chunks: ['runtime', 'vendors', 'vue'],
         }),
       ],
 
@@ -126,6 +135,10 @@ module.exports = (env = {}) => {
               },
               'babel-loader',
             ],
+          },
+          {
+            test: /\.vue$/,
+            loader: 'vue-loader',
           },
         ],
       },

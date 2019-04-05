@@ -11,6 +11,7 @@
     "target": "esnext",
     "jsx": "preserve",
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "allowJs": true
   },
