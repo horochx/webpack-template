@@ -79,7 +79,7 @@ module.exports = (env = {}) => {
 
       resolve: {
         modules: [sourcePath, 'node_modules'],
-        extensions: ['.ts', '.tsx', '.js'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx'],
         alias: {
           '@': sourcePath,
         },
@@ -117,7 +117,7 @@ module.exports = (env = {}) => {
             use: [createFileLoader('fonts', isProduction)],
           },
           {
-            test: /\.(tsx?|js)$/,
+            test: /\.(t|j)sx?$/,
             include: sourcePath,
             use: [
               {
