@@ -3,4 +3,6 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 
-ReactDOM.render(React.createElement(App), document.getElementById('root'))
+console.log(React, ReactDOM)
+
+ReactDOM.render(<App />, document.getElementById('root'))

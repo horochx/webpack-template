@@ -17,7 +17,7 @@ module.exports = (env = {}) => {
   return merge(
     {
       entry: {
-        react: resolve(sourcePath, 'react/index.ts'),
+        react: resolve(sourcePath, 'react/index.tsx'),
         vue: resolve(sourcePath, 'vue/main.ts'),
       },
 

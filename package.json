@@ -4,7 +4,7 @@
   "description": "A webpack template.",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --config webpack.common.js --progress",
+    "dev": "webpack-dev-server --open --config webpack.common.js --progress",
     "build": "webpack --env.production --config webpack.common.js --progress"
   },
   "sideEffects": [
@@ -22,8 +22,6 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
     "@types/node": "^10.14.4",
-    "@types/react": "^16.8.12",
-    "@types/react-dom": "^16.8.3",
     "autoprefixer": "^9.5.0",
     "babel-loader": "^8.0.5",
     "cache-loader": "^2.0.1",
@@ -51,6 +49,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.4.3",
+    "@types/react": "^16.8.12",
+    "@types/react-dom": "^16.8.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "vue": "^2.6.10"
