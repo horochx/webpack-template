@@ -1,7 +1,11 @@
-Minimize webpack 4 template.
+一个简洁的 webpack 4 模板
 
-Feature:
+Features:
 
 - Babel
 - Typescript
-- Multiple pages
+- React
+- Less
+- CSS Modules
+- Autoprefixer
+- CssExtract
