@@ -42,6 +42,7 @@ const ManifestPlugin = require('webpack-manifest-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserJSPlugin = require('terser-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const PreloadWebpackPlugin = require('preload-webpack-plugin')
 
 module.exports = (env = {}) => {
   // env var
@@ -63,6 +64,7 @@ module.exports = (env = {}) => {
     {
       title: APP_NAME,
       filename: 'index.html',
+      entry: 'main',
     },
   ]
 
@@ -127,7 +129,7 @@ module.exports = (env = {}) => {
   const htmlPlugin = htmlPages.map(pageConfig => {
     return new HtmlWebpackPlugin({
       template: resolve('./public/index.html'),
-      chunks: ['runtime', 'vendors', 'main'],
+      chunks: ['runtime', 'vendors', pageConfig.entry],
       ...pageConfig,
     })
   })
@@ -155,6 +157,17 @@ module.exports = (env = {}) => {
     analyzerMode: 'static',
   })
 
+  const scriptPreloadOrFetchPlugin = [
+    new PreloadWebpackPlugin({
+      rel: 'preload',
+      include: 'initial',
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'prefetch',
+      include: 'asyncChunks',
+    }),
+  ]
+
   // dev only
 
   const devOnly = {
@@ -174,7 +187,12 @@ module.exports = (env = {}) => {
     mode: 'production',
   }
 
-  const prodPlugins = [clearDist, manifestPlugin, cssExtractPlugin]
+  const prodPlugins = [
+    clearDist,
+    manifestPlugin,
+    cssExtractPlugin,
+    ...scriptPreloadOrFetchPlugin,
+  ]
 
   useAnalyzer && prodPlugins.push(analyzerPlugin)
 
@@ -209,12 +227,12 @@ module.exports = (env = {}) => {
           test: /\.(le|c)ss$/,
           include: SOURCE_PATH,
           use: [
-            {
-              loader: 'cache-loader',
-              options: {
-                cacheDirectory: resolve('node_modules/.cache-loader'),
-              },
-            },
+            // {
+            //   loader: 'cache-loader',
+            //   options: {
+            //     cacheDirectory: resolve('node_modules/.cache-loader'),
+            //   },
+            // },
             isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
             {
               loader: 'css-loader',
