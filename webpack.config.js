@@ -283,13 +283,13 @@ module.exports = (env = {}) => {
               },
             },
             'thread-loader',
+            'babel-loader',
             {
               loader: 'ts-loader',
               options: {
                 happyPackMode: true,
               },
             },
-            'babel-loader',
           ],
         },
       ],
