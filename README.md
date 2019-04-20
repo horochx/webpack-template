@@ -1,4 +1,4 @@
-一个简洁的 webpack 4 模板
+一个配置简洁、功能完备的 webpack 4 模板
 
 Features:
 
@@ -9,3 +9,6 @@ Features:
 - CSS Modules
 - Autoprefixer
 - CssExtract
+- &lt;link rel="prefetch/preload"&gt;
+- eslint
+- lint-staged
