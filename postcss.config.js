@@ -1,7 +1,14 @@
-const autoprefixer = require('autoprefixer')
 const postcssFlexbugsFixes = require('postcss-flexbugs-fixes')
-const postcssNormalize = require('postcss-normalize')
+const postcssPresetEnv = require('postcss-preset-env')
 
 module.exports = {
-  plugins: [autoprefixer, postcssFlexbugsFixes, postcssNormalize()],
+  plugins: [
+    postcssFlexbugsFixes,
+    postcssPresetEnv({
+      stage: 2,
+      features: {
+        'nesting-rules': true,
+      },
+    }),
+  ],
 }

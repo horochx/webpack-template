@@ -4,7 +4,7 @@ import 'core-js/es/promise'
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './main.less'
+import './main.css'
 import App from './App'
 
 ReactDOM.render(React.createElement(App, null), document.getElementById('root'))

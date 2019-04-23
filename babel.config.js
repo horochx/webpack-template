@@ -1,9 +1,8 @@
 const crypto = require('crypto')
-
 const generateScopedName = (className, filePath) => {
   const md5 = crypto.createHash('md5')
-  const hash = '_' + md5.update(className + filePath).digest('hex')
-  return hash.slice(0, 9)
+  const hash = 'm_' + md5.update(className + filePath).digest('hex')
+  return hash.slice(0, 8)
 }
 
 module.exports = api => {
@@ -28,11 +27,8 @@ module.exports = api => {
       [
         'react-css-modules',
         {
-          filetypes: {
-            '.less': {
-              syntax: 'postcss-less',
-            },
-          },
+          exclude: '^.*?(?<!\\.modules)\\.css$',
+          webpackHotModuleReloading: true,
           attributeNames: {
             activeStyleName: 'activeClassName',
           },

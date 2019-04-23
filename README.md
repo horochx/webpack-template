@@ -5,7 +5,7 @@ Features:
 - Babel
 - Typescript
 - React
-- Less
+- CSS Next
 - CSS Modules
 - Autoprefixer
 - CssExtract

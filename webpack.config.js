@@ -15,8 +15,8 @@ const crypto = require('crypto')
 
 const generateScopedName = (className, filePath) => {
   const md5 = crypto.createHash('md5')
-  const hash = '_' + md5.update(className + filePath).digest('hex')
-  return hash.slice(0, 9)
+  const hash = 'm_' + md5.update(className + filePath).digest('hex')
+  return hash.slice(0, 8)
 }
 
 // const
@@ -168,6 +168,27 @@ module.exports = (env = {}) => {
     }),
   ]
 
+  // loader rules
+
+  const styleSheetLoader = modules => {
+    return [
+      isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+      modules
+        ? {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              sourceMap: !isProduction,
+              getLocalIdent({ resourcePath }, localIdentName, localName) {
+                return generateScopedName(localName, resourcePath)
+              },
+            },
+          }
+        : 'css-loader',
+      'postcss-loader',
+    ]
+  }
+
   // dev only
 
   const devOnly = {
@@ -224,28 +245,15 @@ module.exports = (env = {}) => {
     module: {
       rules: [
         {
-          test: /\.(le|c)ss$/,
+          test: /\.modules\.css$/,
           include: SOURCE_PATH,
-          use: [
-            // {
-            //   loader: 'cache-loader',
-            //   options: {
-            //     cacheDirectory: resolve('node_modules/.cache-loader'),
-            //   },
-            // },
-            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                sourceMap: !isProduction,
-                getLocalIdent({ resourcePath }, localIdentName, localName) {
-                  return generateScopedName(localName, resourcePath)
-                },
-              },
-            },
-            'postcss-loader',
-          ],
+          use: styleSheetLoader(true),
+        },
+
+        {
+          test: /^.*?(?<!\.modules)\.css$/,
+          include: SOURCE_PATH,
+          use: styleSheetLoader(false),
         },
 
         {
