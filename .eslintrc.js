@@ -16,11 +16,7 @@ module.exports = {
 
   globals: {},
 
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
 
   settings: {
     react: {
@@ -29,7 +25,7 @@ module.exports = {
     },
   },
 
-  plugins: ['react-hooks'],
+  plugins: ['react', 'react-hooks'],
 
   rules: {
     // base

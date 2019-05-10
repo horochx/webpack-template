@@ -15,8 +15,14 @@ const crypto = require('crypto')
 
 const generateScopedName = (className, filePath) => {
   const md5 = crypto.createHash('md5')
-  const hash = 'm_' + md5.update(className + filePath).digest('hex')
-  return hash.slice(0, 8)
+  const hash =
+    'm_' +
+    md5
+      .update(className + filePath)
+      .digest('hex')
+      // eslint-disable-next-line no-magic-numbers
+      .substr(12, 8)
+  return hash
 }
 
 // const
@@ -31,7 +37,12 @@ const URL_LOADER_LIMIT = 10000
 
 // modules
 
-const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack')
+const {
+  DefinePlugin,
+  optimize: { OccurrenceOrderPlugin },
+  HotModuleReplacementPlugin,
+  NoEmitOnErrorsPlugin,
+} = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
@@ -77,7 +88,9 @@ module.exports = (env = {}) => {
   // entry
 
   const entry = {
-    main: resolve(SOURCE_PATH, 'main.ts'),
+    main: isProduction
+      ? resolve(SOURCE_PATH, 'main.ts')
+      : ['webpack-hot-middleware/client', resolve(SOURCE_PATH, 'main.ts')],
   }
 
   // output
@@ -141,7 +154,11 @@ module.exports = (env = {}) => {
     ...definedMap,
   })
 
+  const occurrenceOrderPlugin = new OccurrenceOrderPlugin()
+
   const hmrPlugin = new HotModuleReplacementPlugin()
+
+  const noEmitOnErrorsPlugin = new NoEmitOnErrorsPlugin()
 
   const clearDist = new CleanWebpackPlugin([DIST_PATH])
 
@@ -194,13 +211,9 @@ module.exports = (env = {}) => {
   const devOnly = {
     mode: 'development',
     devtool: 'source-map',
-    devServer: {
-      contentBase: DIST_PATH,
-      hot: true,
-    },
   }
 
-  const devPlugins = [hmrPlugin]
+  const devPlugins = [occurrenceOrderPlugin, hmrPlugin, noEmitOnErrorsPlugin]
 
   // prod only
 
