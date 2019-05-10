@@ -83,6 +83,7 @@ module.exports = (env = {}) => {
 
   const alias = {
     '@': SOURCE_PATH,
+    'react-dom': '@hot-loader/react-dom',
   }
 
   // entry
