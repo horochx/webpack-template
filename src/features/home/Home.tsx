@@ -1,7 +1,5 @@
 import React, { memo } from 'react'
-
 import logo from './logo.svg'
-
 import './Home.modules.css'
 
 function Home() {

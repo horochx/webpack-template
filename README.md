@@ -4,7 +4,7 @@ Features:
 
 - Babel
 - Typescript
-- React + React-Router
+- React + React-Router + Redux
 - HMR
 - CSS Next
 - CSS Modules

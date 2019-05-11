@@ -1,4 +1,11 @@
-import { lazy } from 'react'
+import { lazy, ComponentType } from 'react'
+
+export interface RouteConfig {
+  path: string
+  exact?: boolean
+  component: ComponentType<any>
+  routes?: RouteConfig[]
+}
 
 export default [
   {
@@ -11,4 +18,4 @@ export default [
     path: '/other',
     component: lazy(() => import('@/features/other')),
   },
-]
+] as RouteConfig[]

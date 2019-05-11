@@ -7,7 +7,7 @@
     "dev": "node server.js",
     "build": "webpack --env.production --config webpack.config.js --progress",
     "analyzer": "webpack --env.production --env.analyzer --config webpack.config.js --progress",
-    "lint": "eslint --fix src --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix src"
   },
   "lint-staged": {
     "src/**/*.{js,ts,jsx,tsx}": [
@@ -75,6 +75,7 @@
     "@hot-loader/react-dom": "^16.8.6",
     "@types/react": "^16.8.14",
     "@types/react-dom": "^16.8.4",
+    "@types/react-redux": "^7.0.8",
     "@types/react-router-dom": "^4.3.3",
     "babel-plugin-react-css-modules": "^5.2.4",
     "core-js": "^3.0.1",

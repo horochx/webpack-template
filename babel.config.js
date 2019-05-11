@@ -6,7 +6,6 @@ const generateScopedName = (className, filePath) => {
     md5
       .update(className + filePath)
       .digest('hex')
-      // eslint-disable-next-line no-magic-numbers
       .substr(12, 8)
   return hash
 }

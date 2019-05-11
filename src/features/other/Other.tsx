@@ -1,7 +1,13 @@
 import React, { memo } from 'react'
+import Counter from './components/Counter'
 
-function Login() {
-  return <div>另一个页面</div>
+function Other() {
+  return (
+    <div>
+      <div>另一个页面</div>
+      <Counter />
+    </div>
+  )
 }
 
-export default memo(Login)
+export default memo(Other)

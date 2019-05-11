@@ -16,7 +16,11 @@ module.exports = {
 
   globals: {},
 
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+  ],
 
   settings: {
     react: {
@@ -25,12 +29,11 @@ module.exports = {
     },
   },
 
-  plugins: ['react', 'react-hooks'],
+  plugins: ['react-hooks'],
 
   rules: {
     // base
-    'no-magic-numbers': 'warn',
-    indent: ['error', 2],
+    indent: ['error', 2, { SwitchCase: 1 }],
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
     'comma-dangle': ['error', 'always-multiline'],
