@@ -15,7 +15,7 @@ const store = createStore(
 )
 
 function App() {
-  const [routeMap] = useRenderRoute(routeEntry)
+  const routeMap = useRenderRoute(routeEntry)
 
   return (
     <Provider store={store}>

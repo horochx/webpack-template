@@ -1,10 +1,8 @@
-import React, { useState, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import { Route } from 'react-router'
 import { RouteConfig } from '../routeEntry'
 
-export default function(initRoutes: RouteConfig[]) {
-  const [routes, setRoutes] = useState(initRoutes)
-
+export default function(routes: RouteConfig[]) {
   const routeMap = useMemo(() => {
     return routes.map((route, i) => (
       <Route
@@ -16,5 +14,5 @@ export default function(initRoutes: RouteConfig[]) {
     ))
   }, [routes])
 
-  return [routeMap, routes, setRoutes]
+  return routeMap
 }
