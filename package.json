@@ -6,12 +6,10 @@
   "scripts": {
     "dev": "node server.js",
     "build": "webpack --env.production --config webpack.config.js --progress",
-    "analyzer": "webpack --env.production --env.analyzer --config webpack.config.js --progress",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix src"
+    "analyzer": "webpack --env.production --env.analyzer --config webpack.config.js --progress"
   },
   "lint-staged": {
     "src/**/*.{js,ts,jsx,tsx}": [
-      "npm run lint",
       "git add"
     ]
   },
@@ -35,16 +33,11 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "@types/node": "^14.0.27",
-    "@typescript-eslint/eslint-plugin": "^3.9.0",
-    "@typescript-eslint/parser": "^3.9.0",
     "babel-loader": "^8.1.0",
     "cache-loader": "^4.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^6.0.3",
     "css-loader": "^4.2.1",
-    "eslint": "^7.7.0",
-    "eslint-plugin-react": "^7.20.6",
-    "eslint-plugin-react-hooks": "^4.0.8",
     "express": "^4.17.1",
     "file-loader": "^6.0.0",
     "fork-ts-checker-webpack-plugin": "^5.0.14",

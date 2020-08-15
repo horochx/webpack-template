@@ -11,5 +11,4 @@ Features:
 - Autoprefixer
 - CssExtract
 - &lt;link rel="prefetch/preload"&gt;
-- eslint
 - lint-staged

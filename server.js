@@ -23,6 +23,5 @@ app.use(
 app.use(webpackHotMiddleware(compiler))
 
 app.listen(PORT, function() {
-  // eslint-disable-next-line no-console
   console.log(`dev server listening on port ${PORT}!\n`)
 })
