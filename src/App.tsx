@@ -1,31 +1,30 @@
-import { hot } from 'react-hot-loader/root'
-import React, { Suspense } from 'react'
-import { HashRouter as Router, Switch } from 'react-router-dom'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import reducerEntry from '@/common/reducerEntry'
-import routeEntry from '@/common/routeEntry'
-import useRenderRoute from '@/common/hooks/useRenderRoute'
-
-const store = createStore(
-  reducerEntry,
-  process.env.NODE_ENV !== 'production' &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__()
-)
+import React, { useReducer } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
-  const routeMap = useRenderRoute(routeEntry)
+  const [count, counter] = useReducer((_) => _ + 1, 0);
 
   return (
-    <Provider store={store}>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Router>
-          <Switch>{routeMap}</Switch>
-        </Router>
-      </Suspense>
-    </Provider>
-  )
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.tsx</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+        <p>count: {count}</p>
+        <button onClick={counter}>counter</button>
+      </header>
+    </div>
+  );
 }
 
-export default hot(App)
+export default App;

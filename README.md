@@ -4,10 +4,9 @@ Features:
 
 - Babel
 - Typescript
-- React + React-Router + Redux
+- React
 - HMR
-- CSS Next
-- CSS Modules
+- LESS/SCSS
 - Autoprefixer
 - CssExtract
 - &lt;link rel="prefetch/preload"&gt;

@@ -1,326 +1,259 @@
-// utils
-const path = require('path')
-
-const resolve = (...p) => path.resolve(__dirname, ...p)
-
-const createFileLoader = (outputPath, isProduction) => ({
-  loader: 'file-loader',
-  options: {
-    outputPath: isProduction ? outputPath : void 0,
-    name: isProduction ? '[hash:8].[ext]' : '[name].[ext]',
-  },
-})
-
-const crypto = require('crypto')
-
-const generateScopedName = (className, filePath) => {
-  const md5 = crypto.createHash('md5')
-  const hash =
-    'm_' +
-    md5
-      .update(className + filePath)
-      .digest('hex')
-      .substr(12, 8)
-  return hash
-}
-
-// const
-
-const SOURCE_PATH = resolve('src')
-
-const DIST_PATH = resolve('dist')
-
-const APP_NAME = require('./package.json').name
-
-const URL_LOADER_LIMIT = 10000
-
-// modules
-
-const {
-  DefinePlugin,
-  optimize: { OccurrenceOrderPlugin },
-  HotModuleReplacementPlugin,
-  NoEmitOnErrorsPlugin,
-} = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
-const CopyPlugin = require('copy-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin
-const ManifestPlugin = require('webpack-manifest-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const TerserJSPlugin = require('terser-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const PreloadWebpackPlugin = require('preload-webpack-plugin')
+const path = require("path");
+const { DefinePlugin, NoEmitOnErrorsPlugin } = require("webpack");
+const { GenerateSW } = require("workbox-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserJSPlugin = require("terser-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const PreloadWebpackPlugin = require("preload-webpack-plugin");
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+const Dotenv = require("dotenv-webpack");
+const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 module.exports = (env = {}) => {
-  // env var
+  // env
+  const isProduction = !!env.production;
+  const useAnalyzer = !!env.analyzer;
 
-  const isProduction = env.production
-  const useAnalyzer = env.analyzer
+  process.env.NODE_ENV = isProduction ? "production" : "development";
 
-  // defined var
+  // utils
+  const resolveRelativePath = (relativePath) =>
+    path.resolve(__dirname, relativePath);
 
-  const definedMap = {
-    SERVICE_URL: isProduction
-      ? JSON.stringify('https://prod.example.com/')
-      : JSON.stringify('https://dev.example.com/'),
-  }
+  // config
+  const smp = new SpeedMeasurePlugin();
+  return smp.wrap({
+    mode: isProduction ? "production" : "development",
 
-  // htmlPages
-
-  const htmlPages = [
-    {
-      title: APP_NAME,
-      filename: 'index.html',
-      entry: 'main',
+    entry: {
+      index: resolveRelativePath("./src/index.ts"),
     },
-  ]
 
-  // path alias
-
-  const alias = {
-    '@': SOURCE_PATH,
-    'react-dom': '@hot-loader/react-dom',
-  }
-
-  // entry
-
-  const entry = {
-    main: isProduction
-      ? resolve(SOURCE_PATH, 'main.ts')
-      : ['webpack-hot-middleware/client?reload=true', resolve(SOURCE_PATH, 'main.ts')],
-  }
-
-  // output
-
-  const output = {
-    path: DIST_PATH,
-    hashDigestLength: 8,
-    filename: isProduction ? 'js/[contenthash].bundle.js' : '[name].bundle.js',
-    chunkFilename: isProduction
-      ? 'js/[contenthash].bundle.js'
-      : '[name].bundle.js',
-  }
-
-  // optimization
-
-  const optimization = {
-    usedExports: true,
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-      },
-    },
-    minimizer: [
-      new TerserJSPlugin({
-        exclude: /[\\/]node_modules[\\/]/,
-        cache: true,
-        parallel: true,
-      }),
-      new OptimizeCSSAssetsPlugin({}),
-    ],
-  }
-
-  // plugins
-
-  const copyPlugin = new CopyPlugin([
-    {
-      from: resolve('./public'),
-      to: DIST_PATH,
-    },
-  ])
-
-  const forkTsCheck = new ForkTsCheckerWebpackPlugin()
-
-  const htmlPlugin = htmlPages.map(pageConfig => {
-    return new HtmlWebpackPlugin({
-      template: resolve('./public/index.html'),
-      chunks: ['runtime', 'vendors', pageConfig.entry],
-      ...pageConfig,
-    })
-  })
-
-  const definePlugin = new DefinePlugin({
-    'process.env': {
-      NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development'),
-    },
-    ...definedMap,
-  })
-
-  const occurrenceOrderPlugin = new OccurrenceOrderPlugin()
-
-  const hmrPlugin = new HotModuleReplacementPlugin()
-
-  const noEmitOnErrorsPlugin = new NoEmitOnErrorsPlugin()
-
-  const clearDist = new CleanWebpackPlugin([DIST_PATH])
-
-  const manifestPlugin = new ManifestPlugin()
-
-  const cssExtractPlugin = new MiniCssExtractPlugin({
-    hashDigestLength: 8,
-    filename: 'css/[contenthash].bundle.css',
-    chunkFilename: 'css/[contenthash].bundle.css',
-  })
-
-  const analyzerPlugin = new BundleAnalyzerPlugin({
-    analyzerMode: 'static',
-  })
-
-  const scriptPreloadOrFetchPlugin = [
-    new PreloadWebpackPlugin({
-      rel: 'preload',
-      include: 'initial',
-    }),
-    new PreloadWebpackPlugin({
-      rel: 'prefetch',
-      include: 'asyncChunks',
-    }),
-  ]
-
-  // loader rules
-
-  const styleSheetLoader = modules => {
-    return [
-      isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
-      modules
-        ? {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              sourceMap: !isProduction,
-              getLocalIdent({ resourcePath }, localIdentName, localName) {
-                return generateScopedName(localName, resourcePath)
-              },
-            },
-          }
-        : 'css-loader',
-      'postcss-loader',
-    ]
-  }
-
-  // dev only
-
-  const devOnly = {
-    mode: 'development',
-    devtool: 'source-map',
-  }
-
-  const devPlugins = [occurrenceOrderPlugin, hmrPlugin, noEmitOnErrorsPlugin]
-
-  // prod only
-
-  const prodOnly = {
-    mode: 'production',
-  }
-
-  const prodPlugins = [
-    clearDist,
-    manifestPlugin,
-    cssExtractPlugin,
-    ...scriptPreloadOrFetchPlugin,
-  ]
-
-  useAnalyzer && prodPlugins.push(analyzerPlugin)
-
-  // common config
-
-  const commonConfig = {
-    entry,
-
-    output,
-
-    optimization,
-
-    plugins: [
-      copyPlugin,
-      forkTsCheck,
-      ...htmlPlugin,
-      definePlugin,
-      ...(isProduction ? prodPlugins : devPlugins),
-    ],
-
-    resolve: {
-      modules: [SOURCE_PATH, 'node_modules'],
-      extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
-      alias,
-      symlinks: false,
-      cacheWithContext: false,
+    output: {
+      path: resolveRelativePath("./dist"),
+      filename: isProduction ? "js/[name].[contenthash:8].js" : "js/[name].js",
+      chunkFilename: isProduction
+        ? "js/[name].[contenthash:8].bundle.js"
+        : "js/[name].bundle.js",
     },
 
     module: {
       rules: [
         {
-          test: /\.modules\.css$/,
-          include: SOURCE_PATH,
-          use: styleSheetLoader(true),
+          test: /\.tsx?$/,
+          loaders: [
+            isProduction ? void 0 : "cache-loader",
+            "thread-loader",
+            "babel-loader",
+            {
+              loader: "ts-loader",
+              options: {
+                happyPackMode: true,
+                transpileOnly: true,
+              },
+            },
+          ].filter(Boolean),
         },
 
         {
-          test: /^.*?(?<!\.modules)\.css$/,
-          include: SOURCE_PATH,
-          use: styleSheetLoader(false),
-        },
-
-        {
-          test: /\.(png|svg|jpe?g|gif)$/,
-          include: SOURCE_PATH,
+          test: /\.css$/,
           use: [
-            isProduction
-              ? {
-                  loader: 'url-loader',
-                  options: Object.assign(
-                    {
-                      limit: URL_LOADER_LIMIT,
-                    },
-                    createFileLoader('images', isProduction).options
-                  ),
-                }
-              : createFileLoader('images', isProduction),
+            isProduction ? void 0 : "cache-loader",
+            isProduction ? MiniCssExtractPlugin.loader : void 0,
+            isProduction ? void 0 : "style-loader",
+            // "thread-loader",
+            "css-loader",
+            "postcss-loader",
+          ].filter(Boolean),
+        },
+
+        {
+          test: /\.s[ac]ss$/,
+          use: [
+            isProduction ? void 0 : "cache-loader",
+            isProduction ? MiniCssExtractPlugin.loader : void 0,
+            isProduction ? void 0 : "style-loader",
+            // "thread-loader",
+            "css-loader",
+            "postcss-loader",
+            "sass-loader",
+          ].filter(Boolean),
+        },
+
+        {
+          test: /\.svg$/,
+          use: [
+            "@svgr/webpack",
+            {
+              loader: "url-loader",
+              options: {
+                limit: 8192,
+                name: isProduction
+                  ? "img/[name].[contenthash:8].[ext]"
+                  : "img/[name].[ext]",
+              },
+            },
           ],
+        },
+
+        {
+          test: /\.(png|jpe?g|gif)$/,
+          use: {
+            loader: "url-loader",
+            options: {
+              limit: 8192,
+              name: isProduction
+                ? "img/[name].[contenthash:8].[ext]"
+                : "img/[name].[ext]",
+            },
+          },
         },
 
         {
           test: /\.(woff|woff2|eot|ttf|otf)$/,
-          include: SOURCE_PATH,
-          use: [createFileLoader('fonts', isProduction)],
-        },
-
-        {
-          test: /\.(t|j)sx?$/,
-          include: SOURCE_PATH,
-          use: [
-            {
-              loader: 'cache-loader',
-              options: {
-                cacheDirectory: resolve('node_modules/.cache-loader'),
-              },
+          use: {
+            loader: "url-loader",
+            options: {
+              limit: 65536,
+              name: isProduction
+                ? "font/[name].[contenthash:8].[ext]"
+                : "font/[name].[ext]",
             },
-            'thread-loader',
-            'babel-loader',
-            {
-              loader: 'ts-loader',
-              options: {
-                happyPackMode: true,
-              },
-            },
-          ],
+          },
         },
       ],
     },
-  }
 
-  // result
+    resolve: {
+      modules: [resolveRelativePath("./src"), "node_modules"],
+      extensions: [".ts", ".tsx", ".js", ".jsx", "json"],
+    },
 
-  return {
-    ...commonConfig,
-    ...(isProduction ? prodOnly : devOnly),
-  }
-}
+    performance: {
+      hints: "warning",
+      maxAssetSize: 300000,
+      maxEntrypointSize: 300000,
+    },
+
+    devtool: isProduction ? "none" : "inline-source-map",
+
+    target: "web",
+
+    externals: [],
+
+    devServer: {
+      host: "0.0.0.0",
+      port: 8080,
+      proxy: {
+        "/api/v2/": {
+          target: "https://pokeapi.co/api/v2/",
+          changeOrigin: true,
+          secure: false,
+        },
+      },
+      historyApiFallback: true,
+      hot: true,
+    },
+
+    plugins: [
+      new CopyPlugin({
+        patterns: [
+          {
+            from: resolveRelativePath("./public"),
+            to: resolveRelativePath("./dist"),
+          },
+        ],
+      }),
+
+      new ForkTsCheckerWebpackPlugin(),
+
+      new HtmlWebpackPlugin({
+        template: resolveRelativePath("./src/index.ejs"),
+        filename: "index.html",
+        chunks: ["runtime", "vendors", "index"],
+      }),
+
+      new Dotenv(),
+
+      new DefinePlugin({
+        "process.env.NODE_ENV": JSON.stringify(
+          isProduction ? "production" : "development"
+        ),
+      }),
+
+      // isProduction ? void 0 : new HotModuleReplacementPlugin(),
+
+      isProduction ? void 0 : new ReactRefreshWebpackPlugin(),
+
+      isProduction ? void 0 : new NoEmitOnErrorsPlugin(),
+
+      isProduction ? new CleanWebpackPlugin() : void 0,
+
+      isProduction
+        ? new MiniCssExtractPlugin({
+            filename: "css/[name].[contenthash:8].css",
+            chunkFilename: "css/[name].[contenthash:8].bundle.css",
+          })
+        : void 0,
+
+      isProduction
+        ? new PreloadWebpackPlugin({
+            rel: "preload",
+            include: "initial",
+          })
+        : void 0,
+
+      isProduction
+        ? new PreloadWebpackPlugin({
+            rel: "prefetch",
+            include: "asyncChunks",
+          })
+        : void 0,
+
+      isProduction
+        ? new GenerateSW({
+            cleanupOutdatedCaches: true,
+            clientsClaim: true,
+            skipWaiting: true,
+            sourcemap: !isProduction,
+          })
+        : void 0,
+
+      useAnalyzer
+        ? new BundleAnalyzerPlugin({
+            analyzerMode: "static",
+            reportFilename: `report.${Date.now()}.html`,
+          })
+        : void 0,
+    ].filter(Boolean),
+
+    optimization: isProduction
+      ? {
+          runtimeChunk: "single",
+          splitChunks: {
+            chunks: "all",
+            cacheGroups: {
+              vendors: {
+                name: "vendors",
+                test: /[\\/]node_modules[\\/]/,
+                chunks: "all",
+              },
+            },
+          },
+          minimizer: [
+            new TerserJSPlugin({
+              exclude: /[\\/]node_modules[\\/]/,
+              cache: true,
+              parallel: true,
+            }),
+            new OptimizeCSSAssetsPlugin({}),
+          ],
+        }
+      : void 0,
+  });
+};
