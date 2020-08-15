@@ -1,21 +1,35 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/",
-    "sourceMap": true,
-    "paths": {
-      "@/*": ["src/*"]
-    },
-    "strict": true,
-    "module": "esnext",
+    // Project Options
     "target": "esnext",
+    "module": "esnext",
+    "declaration": true,
+    "sourceMap": true,
     "jsx": "preserve",
+    "noEmit": true,
+    // Strict Checks
+    "strict": true,
+    // Module Resolution
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
-    "allowJs": true
+    // Linter Checks
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    // Experimental
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    // Command Line
+    "pretty": true,
+    // Advanced
+    "resolveJsonModule": true
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "tests/**/*.ts", "tests/**/*.tsx"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.json",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "tests/**/*.json"
+  ],
   "exclude": ["node_modules"]
 }
