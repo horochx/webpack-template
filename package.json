@@ -86,5 +86,11 @@
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5",
     "regenerator-runtime": "^0.13.7"
-  }
+  },
+  "browserslist": [
+    "last 2 versions",
+    "> 0.2%",
+    "not op_mini all",
+    "not dead"
+  ]
 }
