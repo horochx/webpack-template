@@ -6,8 +6,9 @@ Features:
 - Typescript
 - React
 - HMR
-- LESS/SCSS
+- SASS/SCSS
 - Autoprefixer
-- CssExtract
+- CSSExtract
 - &lt;link rel="prefetch/preload"&gt;
 - lint-staged
+- PWA
