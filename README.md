@@ -1,4 +1,4 @@
-一个配置简洁、功能完备的 webpack 4 模板
+A Webpack 4 template.
 
 Features:
 
