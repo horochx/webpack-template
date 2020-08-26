@@ -10,6 +10,7 @@
     // Strict Checks
     "strict": true,
     // Module Resolution
+    "baseUrl": ".",
     "moduleResolution": "node",
     "esModuleInterop": true,
     // Linter Checks
