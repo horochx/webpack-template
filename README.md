@@ -1,3 +1,5 @@
+**NEW WEBPACK 5 TEMPLATE: https://github.com/horochx/react-app-boilerplate**
+
 A Webpack 4 template.
 
 Features:
